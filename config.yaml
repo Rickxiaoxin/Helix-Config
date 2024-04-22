@@ -9,7 +9,7 @@ CompileFlags:                     # Tweak the parse settings
     -isystemD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/backward
     -isystemD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/include
     -isystemD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/include-fixed
-    ]
+    ]  # 通过检查编译器的搜索路径来确定上述目录，通过isystem与--target传递
   Remove: -W*                     # strip all other warning-related flags
   Compiler: g++               # Change argv[0] of compile flags to `clang++`
       
