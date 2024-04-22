@@ -1,0 +1,42 @@
+CompileFlags:                     # Tweak the parse settings
+  Add: [
+    -xc++,
+    -Wall,
+    --target=x86_64-w64-mingw32,
+    -isystemD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/include
+    -isystemD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++
+    -isystemD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/x86_64-w64-mingw32
+    -isystemD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/backward
+    -isystemD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/include
+    -isystemD:/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/include-fixed
+    ]
+  Remove: -W*                     # strip all other warning-related flags
+  Compiler: g++               # Change argv[0] of compile flags to `clang++`
+      
+Index:
+  Background: Skip     # Disable slow background indexing of these files.
+  StandardLibrary: No
+
+Diagnostics:
+  ClangTidy:
+    Add: modernize*
+    Remove: modernize-use-trailing-return-type
+    CheckOptions:
+      readability-identifier-naming.VariableCase: CamelCase
+    FastCheckFilter: Strict
+    UnusedIncludes: Strict
+
+InlayHints:
+  BlockEnd: No
+  Designators: Yes
+  Enabled: Yes
+  ParameterNames: Yes
+  DeducedTypes: Yes
+  TypeNameLimit: 24
+
+Hover:
+  ShowAKA: No
+
+SemanticTokens:
+  DisabledKinds: []
+  DisabledModifiers: []
